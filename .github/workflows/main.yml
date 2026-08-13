@@ -19,7 +19,7 @@ jobs:
               run: sh "echo 'Build is running'"
 
             - name: archieving artifact
-              uses: actions/artifact-uploader@v4
+              uses: actions/upload-artifact@v4
               with:
                 name: vrofile-app
                 path: target/*.war
