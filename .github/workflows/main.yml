@@ -1,0 +1,35 @@
+name: workflow
+on:
+    # pull_request:
+    #     branches:
+    #         - main
+    push:
+        branches:
+            - main
+            - devops
+permissions:
+    contents: read
+jobs:
+    Build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout
+              uses: actions/checkout@v4
+            - name: Build runs
+              run: sh "echo 'Build is running'"
+
+            - name: archieving artifact
+              uses: actions/upload-artifact@v4
+              with:
+                name: vrofile-app
+                path: target/*.war
+            - name: build failed
+              if: failure()
+              run: sh "echo 'Build failed' "
+
+    Testing:
+        needs: Build
+        runs-on: ubuntu-latest
+        steps:
+            - name: Running build
+              run: sh "echo 'Test is running'"
