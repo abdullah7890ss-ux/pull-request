@@ -23,6 +23,7 @@ jobs:
               with:
                 name: vrofile-app
                 path: target/*.war
+            - name: build failed
               if: failure()
               run: sh "echo 'Build failed' "
 
