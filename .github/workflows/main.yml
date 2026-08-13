@@ -16,7 +16,7 @@ jobs:
             - name: checkout
               uses: actions/checkout@v4
             - name: Build runs
-              run: sh "echo 'Build is running'"
+              run: echo "Build is running"
 
             - name: archieving artifact
               uses: actions/upload-artifact@v4
@@ -25,11 +25,11 @@ jobs:
                 path: target/*.war
             - name: build failed
               if: failure()
-              run: sh "echo 'Build failed' "
+              run: echo "Build failed "
 
     Testing:
         needs: Build
         runs-on: ubuntu-latest
         steps:
             - name: Running build
-              run: sh "echo 'Test is running'"
+              run: echo "Test is running"
